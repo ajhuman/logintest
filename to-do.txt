@@ -1,0 +1,4 @@
+TO DO:
+* Login/reg with express-session
+
+DONE:

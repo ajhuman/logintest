@@ -7,18 +7,14 @@ var session = require("express-session")
 
 var PORT = 8000
 
-app.use(bodyParser.urlencoded({ extended: true}))
-app.use(express.static(path.join(__dirname, "./client")))
+app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, "./client/dist")))
 app.use(express.static(path.join(__dirname, "./node_modules")))
-
 app.use(session({
-	secret: "secret secret secret secret",
+	secret: "rat secret",
 	resave: false,
 	saveUninitialized: false,
 }))
-
-app.set("views", path.join(__dirname, "./client/views"))
-app.set("view engine", "ejs")
 
 require("./server/config/mongoose.js")
 

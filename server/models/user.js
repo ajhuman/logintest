@@ -1,8 +1,19 @@
-var mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
-var UserSchema = new mongoose.Schema({
+const CommentSchema = mongoose.Schema({
+	user: {type: String, required: true},
+	body: {type: String, required: true},
+}, {timestamps: true})
+
+const RatSchema = mongoose.Schema({
 	name: {type: String, required: true},
-	favorite_band: {type: String, required: false},
+	age: {type: Number, required: true},
+	comments: [CommentSchema]
+}, {timestamps: true})
+
+const UserSchema = mongoose.Schema({
+	name: {type: String, required: true},
+	rats: [RatSchema]
 }, {timestamps: true})
 
 mongoose.model("User", UserSchema)
